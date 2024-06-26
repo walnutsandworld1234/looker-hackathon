@@ -10,9 +10,6 @@
     title_color: "#3a4245"
     show_filters_bar: true
     tile_text_color: "#3a4245"
-    tile_separator_color: "#bdb7b7"
-    tile_border_radius: 2
-    show_tile_shadow: false
     text_tile_text_color: "#ffffff"
   elements:
   - title: Number of First Purchasers
