@@ -1,0 +1,131 @@
+/* styles.css */
+.select-dropdown {
+    min-width: 200px;
+    padding: 5px;
+  }
+
+.help-section {
+    background-color: #FFFFFF;
+    border: 1px solid #E1E5EA;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    grid-row: span 2;
+    flex: 1;
+}
+.help-section h2 {
+    color: #262D33;
+    margin-bottom: 10px;
+}
+.help-section p {
+    font-size: 14px;
+    color: #697077;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.help-section video {
+    width: 100%;
+    border: 1px solid #E1E5EA;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.form-section {
+    background-color: #FFFFFF;
+    border: 1px solid #E1E5EA;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height of viewport */
+    flex: 2; /* Fill remaining space in grid */
+    margin-left: 20px;
+    overflow-y: auto;
+}
+.form-section h1 {
+    color: #262D33;
+    margin-bottom: 10px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Fill remaining space in form section */
+}
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #E1E5EA;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+button {
+    background-color: #0085FF; /* Looker primary button color */
+    color: #FFFFFF;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+button:hover {
+    background-color: #0066CC;
+}
+#response {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #262D33;
+}
+.error {
+    color: #D9534F; /* Red for errors */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Ensure space between sections */
+  align-items: flex-start; /* Align items at the start vertically */
+  padding: 20px; /* Optional: Add some padding around the container */
+}
+
+.search-input {
+  width: 100%; /* Make the input take the full width */
+  margin-bottom: 10px; /* Add some space below the input */
+}
+
+.dashboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px; /* Optional: Limit the height of the list */
+  overflow-y: auto; /* Optional: Add scroll for overflow */
+  border: 1px solid #ccc; /* Optional: Add a border */
+  border-radius: 4px; /* Optional: Add border radius */
+}
+
+.dashboard-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee; /* Optional: Add border between items */
+}
+
+.dashboard-item:hover {
+  background-color: #f5f5f5; /* Change background on hover */
+}
+
+.spacer {
+  margin-bottom: 20px; /* Adjust the spacing as needed */
+}
+
+.review-response {
+  max-width: 100%; /* Ensure it takes full width of its parent but no more */
+  white-space: pre-wrap; /* Ensure text wraps correctly */
+  word-wrap: break-word; /* Ensure long words break to fit */
+  overflow-wrap: break-word; /* Handle text overflow */
+  overflow-y: auto;
+}
