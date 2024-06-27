@@ -1,6 +1,6 @@
 
 application: dashboard-reviewer {
-  label: "Dashboard Review Tool"
+  label: "Dashboard Reviewer Tool"
   url: "https://localhost:8080/bundle.js"
   # file: "bundle.js
   entitlements: {
