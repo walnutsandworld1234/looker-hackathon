@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jupiter: Looker Dashboard Review Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F8FA; /* Looker background color */
+            color: #262D33; /* Looker primary text color */
+            margin: 0;
+            padding: 20px;
+            height: 100vh; /* Full height of viewport */
+            display: grid;
+            grid-template-columns: 30% 70%;
+            grid-template-rows: auto;
+            gap: 20px;
+        }
+        .help-section {
+            background-color: #FFFFFF;
+            border: 1px solid #E1E5EA;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            grid-row: span 2;
+        }
+        .help-section h2 {
+            color: #262D33;
+            margin-bottom: 10px;
+        }
+        .help-section p {
+            font-size: 14px;
+            color: #697077;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .help-section video {
+            width: 100%;
+            border: 1px solid #E1E5EA;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .form-section {
+            background-color: #FFFFFF;
+            border: 1px solid #E1E5EA;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Full height of viewport */
+        }
+        .form-section h1 {
+            color: #262D33;
+            margin-bottom: 10px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* Fill remaining space in form section */
+        }
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #E1E5EA;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #0085FF; /* Looker primary button color */
+            color: #FFFFFF;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0066CC;
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #262D33;
+        }
+        .error {
+            color: #D9534F; /* Red for errors */
+        }
+    </style>
+</head>
+<body>
+    <div class="help-section">
+        <h1 align = 'center'>Jupiter</h1>
+        <h3 align = 'center'>Looker Dashboard Review Tool</h3>
+        <p>Jupiter: Postman's Looker Dashboard Review Tool is poised to become an essential asset for the Looker community by automating and streamlining the dashboard review process.<br><br> 
+            Using a simple interface, the tool provides instant feedback on improvements to metrics, as well as visual and text storytelling. 
+            Therefore, Jupiter eliminates the tedious and error-prone task of manual checks. 
+            This idea came from our own experiences discovering errors in crucial dashboards months after a small change to a tile or missing out on checks due to multiple dashboard review cycles. <br><br>
+            In its future scope, Jupiter aims to become a combination of AI-driven suggestions and rule-based validations. 
+            Admins will be able to provide runtime data, trust metrics, dashboard LookML etc. and add custom guidelines in an easy-to-use interface for guideline management. 
+            The tool can be customized to adhere to organizational guidelines, so that “best practices” do not live in a maze of documents, but are used to guide LookML developers realtime. <br><br>
+            Jupiter not only boosts productivity but also elevates the overall quality and consistency of dashboards, making it an indispensable tool for Looker users.
+            <!-- Watch the video below for a demo on how to use this web app.</p>
+        <video controls>
+            <source src="path_to_demo_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video> -->
+    </div>
+    <div class="form-section">
+        <form id="inputForm">
+            <label for="userInput">Enter the dashboard ID: </label>
+            <input type="text" id="userInput" name="userInput" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="response"></div>
+    </div>
+
+    <script>
+        document.getElementById('inputForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const input = document.getElementById('userInput').value;
+
+            try {
+                // Send input to the cloud function
+                const response = await fetch('https://us-central1-best-hack-427512.cloudfunctions.net/lookml-guide', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Methods': ['GET', 'POST', 'OPTIONS'],
+                        'Access-Control-Allow-Headers': [
+                                                        'Content-Type',
+                                                        'Authorization',
+                                                        'X-Requested-With',
+                                                    ]
+                    },
+                    body: JSON.stringify({ dashboard_id: input })
+                });
+
+                print
+
+                if (!response.ok) {
+                    throw new Error('Function error');
+                }
+
+                const data = await response.json();
+                document.getElementById('response').innerText = `Response: ${data.message}`;
+                document.getElementById('response').classList.remove('error');
+            } catch (error) {
+                document.getElementById('response').innerText = `Error: ${error.message}`;
+                document.getElementById('response').classList.add('error');
+            }
+        });
+    </script>
+</body>
+</html>
