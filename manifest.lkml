@@ -1,18 +1,10 @@
-project_name: "postman_dataverse"
 
-application: my_review_extension {
-  label: "My Review Extension"
+application: dashboard-reviewer {
+  label: "dashboard-reviewer"
   url: "https://localhost:8080/bundle.js"
-  mount_points: {
-    dashboard_tile: yes
-  }
+  # file: "bundle.js
   entitlements: {
-    local_storage: yes
-    use_form_submit: yes
-    core_api_methods: ["me"]
-    external_api_urls: []
-    oauth2_urls: []
-    scoped_user_attributes: []
-    global_user_attributes: []
+    external_api_urls : ["https://localhost:8080","https://us-central1-best-hack-427512.cloudfunctions.net"]
+    core_api_methods: ["me", "dashboard", "all_dashboards", "dashboard_lookml", "search_dashboards"] #Add more entitlements here as you develop new functionality
   }
 }
